@@ -1,0 +1,20 @@
+[
+    {
+        "clave": "1",
+        "valor": 1,
+        "descripcion": "datos recientes"
+    },
+    {
+        "clave": "2",
+        "valor": 1,
+        "descripcion": "datos recientes"
+    },
+    {
+        "id": "1",
+        "nombre": "andres",
+        "apellido": "Lima",
+        "email": "emailaaaa@gmail.com",
+        "telefono": "0988425888",
+        "fechaNacimiento": "2000-01-06"
+    }
+]
