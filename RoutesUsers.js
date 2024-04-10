@@ -7,7 +7,7 @@ users.use(cors());
 
 const fs = require('fs');
 
-users.post('/user/saveOrUpdate', (req, res) => {
+users.post('/saveOrUpdate', (req, res) => {
     let {id, nombre, apellido, email, telefono, fechaNacimiento} = req.body;
 
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -38,6 +38,7 @@ users.post('/user/saveOrUpdate', (req, res) => {
         datos[indice].email = email;
         datos[indice].telefono = telefono;
         datos[indice].fechaNacimiento = fechaNacimiento;
+
     } else {
         datos.push({id, nombre, apellido, email, telefono, fechaNacimiento});
     }
@@ -46,7 +47,7 @@ users.post('/user/saveOrUpdate', (req, res) => {
 });
 
 
-users.get('/user/getAll', (req, res) => {
+users.get('/getAll', (req, res) => {
     if (fs.existsSync('usersData.json')) {
         const datosJSON = fs.readFileSync('usersData.json', 'utf-8');
         const datos = JSON.parse(datosJSON);
@@ -57,7 +58,7 @@ users.get('/user/getAll', (req, res) => {
 });
 
 
-users.get('/user/getbyId', (req, res) => {
+users.get('/getbyId', (req, res) => {
     const id = parseInt(req.query.id);
     if (fs.existsSync('usersData.json')) {
 
@@ -76,7 +77,7 @@ users.get('/user/getbyId', (req, res) => {
     }
 });
 
-users.delete('/user/delete/:id', (req, res) => {
+users.delete('/delete/:id', (req, res) => {
     const {id} = req.params;
     if (fs.existsSync('usersData.json')) {
         const datosJSON = fs.readFileSync('usersData.json', 'utf-8');
@@ -94,6 +95,5 @@ users.delete('/user/delete/:id', (req, res) => {
         res.status(404).send({message: 'No hay usuarios para eliminar.'});
     }
 });
-
 
 module.exports = users

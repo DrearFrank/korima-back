@@ -14,5 +14,37 @@
         "email": "emailaaaa@gmail.com",
         "telefono": "0988425888",
         "fechaNacimiento": "2000-01-06"
+    },
+    {
+        "id": "3",
+        "nombre": "Mouse negro",
+        "apellido": "qweqweq",
+        "email": "yleon6613@gmail.com",
+        "telefono": "0629041013",
+        "fechaNacimiento": "2024-04-11"
+    },
+    {
+        "id": "4",
+        "nombre": "Frank",
+        "apellido": "Leon",
+        "email": "emfleonr@gmail.com",
+        "telefono": "0988425083",
+        "fechaNacimiento": "1993-01-21"
+    },
+    {
+        "id": "5",
+        "nombre": "Frank",
+        "apellido": "Leon",
+        "email": "emfleonr@gmail.com",
+        "telefono": "0988425083",
+        "fechaNacimiento": "1993-01-21"
+    },
+    {
+        "id": "6",
+        "nombre": "andres",
+        "apellido": "leon",
+        "email": "emfleonr@gmail.com",
+        "telefono": "0988425083",
+        "fechaNacimiento": "2015-05-03"
     }
 ]

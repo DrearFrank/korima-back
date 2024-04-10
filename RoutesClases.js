@@ -7,7 +7,7 @@ clases.use(cors());
 const fs = require('fs');
 
 
-clases.post('/class/saveOrUpdate', (req, res) => {
+clases.post('/saveOrUpdate', (req, res) => {
     let {id, name, description, time,  instructor, nivel } = req.body;
 
     let datos = [];
@@ -35,7 +35,7 @@ clases.post('/class/saveOrUpdate', (req, res) => {
 });
 
 
-clases.get('/class/getAll', (req, res) => {
+clases.get('/getAll', (req, res) => {
     if (fs.existsSync('clasesData.json')) {
         const datosJSON = fs.readFileSync('clasesData.json', 'utf-8');
         const datos = JSON.parse(datosJSON);
@@ -46,7 +46,7 @@ clases.get('/class/getAll', (req, res) => {
 });
 
 
-clases.get('/class/getbyClave', (req, res) => {
+clases.get('/getbyClave', (req, res) => {
     const clave = parseInt(req.query.clave);
     if (fs.existsSync('clasesData.json')) {
 
@@ -65,7 +65,7 @@ clases.get('/class/getbyClave', (req, res) => {
     }
 });
 
-clases.delete('/class/delete/:clave', (req, res) => {
+clases.delete('/delete/:clave', (req, res) => {
     const { clave } = req.params;
     if (fs.existsSync('clasesData.json')) {
         const datosJSON = fs.readFileSync('clasesData.json', 'utf-8');

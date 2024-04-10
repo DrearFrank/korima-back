@@ -15,8 +15,10 @@ app.use(
 )
 
 var Users = require('./RoutesUsers')
+var Clases = require('./RoutesClases')
 
-app.use('/korima', Users)
+app.use('/korima/user', Users)
+app.use('/korima/class', Clases)
 
 app.listen(port, function () {
     console.log('Server is running on port: ' + port)
