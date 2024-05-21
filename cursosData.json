@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "name": "Matematicas",
+    "description": "materia primaria",
+    "time": 4,
+    "instructor": "Francisco Leon",
+    "w": 4
+  },
+  {
+    "id": "2",
+    "name": "Matematicas",
+    "description": "materia primaria",
+    "time": 4,
+    "instructor": "Francisco Leon",
+    "nivel": 4
+  }
+]
