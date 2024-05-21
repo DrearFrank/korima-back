@@ -16,8 +16,10 @@ app.use(
 
 var Users = require('./RoutesUsers')
 var Clases = require('./RoutesClases')
+var Cousers = require('./RoutesCursos')
 
 app.use('/korima/user', Users)
+app.use('/korima/courses', Cousers)
 app.use('/korima/class', Clases)
 
 app.listen(port, function () {

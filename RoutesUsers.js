@@ -8,7 +8,7 @@ users.use(cors());
 const fs = require('fs');
 
 users.post('/saveOrUpdate', (req, res) => {
-    let {id, nombre, apellido, email, telefono, fechaNacimiento} = req.body;
+    let {id, nombre, apellido, email, telefono, fechaNacimiento, pais, provincia} = req.body;
 
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!emailRegex.test(email)) { // Agrega el signo de exclamación para negar la condición
@@ -38,9 +38,11 @@ users.post('/saveOrUpdate', (req, res) => {
         datos[indice].email = email;
         datos[indice].telefono = telefono;
         datos[indice].fechaNacimiento = fechaNacimiento;
+        datos[indice].pais = pais;
+        datos[indice].provincia = provincia;
 
     } else {
-        datos.push({id, nombre, apellido, email, telefono, fechaNacimiento});
+        datos.push({id, nombre, apellido, email, telefono, fechaNacimiento, pais, provincia});
     }
     fs.writeFileSync('usersData.json', JSON.stringify(datos, null, 4));
     res.send(`Datos guardados en el archivo JSON`);
@@ -65,7 +67,7 @@ users.get('/getbyId', (req, res) => {
         const datosJSON = fs.readFileSync('usersData.json', 'utf-8');
 
         const datos = JSON.parse(datosJSON);
-        const usuarioEncontrado = datos.find(usuario => usuario.id === id);
+        const usuarioEncontrado = datos.find(usuario => usuario.id === id.toString());
 
         if (usuarioEncontrado) {
             res.json(usuarioEncontrado);
@@ -77,23 +79,24 @@ users.get('/getbyId', (req, res) => {
     }
 });
 
-users.delete('/delete/:id', (req, res) => {
-    const {id} = req.params;
+users.delete('/delete', (req, res) => {
+    const id = req.query.id; // No es necesario parseInt aquí
     if (fs.existsSync('usersData.json')) {
         const datosJSON = fs.readFileSync('usersData.json', 'utf-8');
         let datos = JSON.parse(datosJSON);
-        const indice = datos.findIndex(item => item.id === id);
-
+        const indice = datos.find(usuario => usuario.id === id);
+        console.log(indice)
         if (indice !== -1) {
             datos.splice(indice, 1);
             fs.writeFileSync('usersData.json', JSON.stringify(datos));
-            res.send({message: `Usuario con clave ${clave} eliminado exitosamente.`});
+            res.json({message: `Usuario con id ${id} eliminado exitosamente.`});
         } else {
-            res.status(404).send({message: 'Usuario no encontrado.'});
+            res.status(404).json({message: 'Usuario no encontrado'});
         }
     } else {
-        res.status(404).send({message: 'No hay usuarios para eliminar.'});
+        res.status(404).json({message: 'El archivo usersData.json no existe'});
     }
 });
+
 
 module.exports = users
