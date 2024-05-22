@@ -7,7 +7,7 @@
         "telefono": "0988425083",
         "fechaNacimiento": "2024-04-18",
         "pais": "AR",
-        "provincia": "CB"
+        "ciudad": "CB"
     },
     {
         "id": "15",
@@ -225,6 +225,6 @@
         "telefono": "098885521",
         "fechaNacimiento": "2005-02-02",
         "pais": "Ecuador",
-        "provincia": "Guayas"
+        "ciudad": "Guayas"
     }
 ]

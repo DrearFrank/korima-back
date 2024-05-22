@@ -8,7 +8,7 @@ users.use(cors());
 const fs = require('fs');
 
 users.post('/saveOrUpdate', (req, res) => {
-    let {id, nombre, apellido, email, telefono, fechaNacimiento, pais, provincia} = req.body;
+    let {id, nombre, apellido, email, telefono, fechaNacimiento, pais, ciudad} = req.body;
 
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!emailRegex.test(email)) { // Agrega el signo de exclamación para negar la condición
@@ -39,10 +39,10 @@ users.post('/saveOrUpdate', (req, res) => {
         datos[indice].telefono = telefono;
         datos[indice].fechaNacimiento = fechaNacimiento;
         datos[indice].pais = pais;
-        datos[indice].provincia = provincia;
+        datos[indice].ciudad = ciudad;
 
     } else {
-        datos.push({id, nombre, apellido, email, telefono, fechaNacimiento, pais, provincia});
+        datos.push({id, nombre, apellido, email, telefono, fechaNacimiento, pais, ciudad});
     }
     fs.writeFileSync('usersData.json', JSON.stringify(datos, null, 4));
     res.send(`Datos guardados en el archivo JSON`);
